@@ -168,7 +168,7 @@ export default async function SearchResults({ params: { searchTerm } }: Props) {
           <h1 className="text-[16px] sm:text-[16px] lg:text-[32px] md:text-[22px] mb-5">
             Search results for: &quot;{searchTerm}&quot;
           </h1>
-          <div className="grid grid-flow-row gap-4 grid-cols-2 max-[350px]:grid-cols-1 sm:grid-cols-2 max-w-[1200px]:grid-cols-3 md:grid-cols-2 lg:grid-cols-4 min-h-screen h-auto">
+          <div className="grid grid-flow-row gap-4 grid-cols-2 sm:grid-cols-2 max-w-[1200px]:grid-cols-3 md:grid-cols-2 lg:grid-cols-4 min-h-screen h-auto">
             {results ? (
               Object.values(results).map((result) => (
                 <div key={result.pageid} className="group">

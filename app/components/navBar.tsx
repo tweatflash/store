@@ -54,9 +54,9 @@ export default function NavBar() {
                 <path d="M26.2381 17.9167L20.7382 28H32L26.2381 17.9167Z"></path>
               </svg>
             </div>
-            <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block">
-              {/* SKIIdiv STORE */}
-            </div>
+            {/* <div className="ml-2 flex-none text-sm font-medium uppercase md:hidden lg:block">
+              SKIIdiv STORE
+            </div> */}
           </div>
           <ul className="hidden gap-6 text-sm md:flex md:items-center">
             <li>
