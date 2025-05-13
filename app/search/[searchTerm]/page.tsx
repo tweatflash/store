@@ -8,10 +8,10 @@ type Props = {
   };
 };
 export async function generateMetadata({ params: { searchTerm } }: Props) {
-  const wikiData: Promise<SearchResult> = await getWikiResults(searchTerm);
+  const wikiData: Promise<dummyStore>[] = await getWikiResults(searchTerm);
   const data = await wikiData;
   const displayTerm = searchTerm.replace("%20", " ");
-  if (!data?.query?.pages) {
+  if (!data) {
     return {
       title: 'No results for'+ displayTerm,
       description: 'No results for '+ displayTerm +'found',
@@ -23,10 +23,10 @@ export async function generateMetadata({ params: { searchTerm } }: Props) {
   };
 }
 export default async function SearchResults({ params: { searchTerm } }: Props) {
-  const wikiData: Promise<SearchResult> = await getWikiResults(searchTerm);
+  const wikiData: Promise<Product> = await getWikiResults(searchTerm);
   const data = await wikiData;
-  console.log(data);
-  const results: Result[] | undefined = await data?.query?.pages;
+  // console.log(data);
+  const results: dummyStore[] | undefined = await data?.products;
 
   if (!results) {
     return notFound();
@@ -43,7 +43,7 @@ export default async function SearchResults({ params: { searchTerm } }: Props) {
             <ul className="hidden md:block">
               <li className="mt-2 flex text-black dark:text-white">
                 <Link
-                  href="/"
+                  href={"/search/all"}
                   className="w-full text-sm hover:underline dark:hover:text-neutral-100 underline underline-offset-4"
                 >
                   All
@@ -169,17 +169,17 @@ export default async function SearchResults({ params: { searchTerm } }: Props) {
             Search results for: &quot;{searchTerm}&quot;
           </h1>
           <div className="grid grid-flow-row gap-3 grid-cols-2 sm:grid-cols-2 max-w-[1200px]:grid-cols-3 md:grid-cols-2 lg:grid-cols-4 min-h-screen h-auto">
-            {results ? (
+            {results.length ? (
               Object.values(results).map((result) => (
-                <div key={result.pageid} className="group">
-                  <Link href="#" className="aspect-square block w-full rounded-lg bg-white object-cover group-hover:opacity-75 xl:aspect-7/8 border border-gray-300 dark:border-neutral-700 ">
-                    {/* {result.thumbnail && (
+                <div key={result.id} className="group">
+                  <Link href="#" className="aspect-square block w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-7/8 border border-gray-300 dark:border-neutral-700 ">
+                    {result.images && (
                             <img
                             // alt="Bruuhhh"
-                            src={result?.thumbnail?.source}
+                            src={result.images[0]}
                             className="aspect-[1/1.05] w-full h-full rounded-md object-cover group-hover:opacity-75 "
                           />
-                        )} */}
+                        )}
                   </Link>
 
                   <div className="relative w-full flex justify-between">
@@ -206,8 +206,8 @@ export default async function SearchResults({ params: { searchTerm } }: Props) {
                     </div>
                   </div>
 
-                  <p className="mt-1 text-lg sm:text-[16px] font-bold text-gray-900">
-                    N50,000
+                  <p className="mt-1 text-lg font-bold text-gray-900">
+                    N{result.price}
                   </p>
                   {/* <p className="text-sm font-medium text-gray-900">Ipsum</p> */}
                 </div>

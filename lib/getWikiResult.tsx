@@ -13,7 +13,7 @@ export default async function getWikiResults(searchTerm:string) {
         origin: '*',
     })
     try {
-        const request = await fetch(`https://en.wikipedia.org/w/api.php?`+searchParams)
+        const request = await fetch(searchTerm==="all"?'https://dummyjson.com/products':'https://dummyjson.com/products/search?q='+searchTerm )
         if (!request.ok) undefined
         return request.json()
     } catch (error) {
