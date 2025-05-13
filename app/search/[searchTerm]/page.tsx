@@ -168,7 +168,7 @@ export default async function SearchResults({ params: { searchTerm } }: Props) {
           <h1 className="text-[16px] sm:text-[16px] lg:text-[32px] md:text-[22px] mb-5">
             Search results for: &quot;{searchTerm}&quot;
           </h1>
-          <div className="grid grid-flow-row gap-4 grid-cols-2 sm:grid-cols-2 max-w-[1200px]:grid-cols-3 md:grid-cols-2 lg:grid-cols-4 min-h-screen h-auto">
+          <div className="grid grid-flow-row gap-3 grid-cols-2 sm:grid-cols-2 max-w-[1200px]:grid-cols-3 md:grid-cols-2 lg:grid-cols-4 min-h-screen h-auto">
             {results ? (
               Object.values(results).map((result) => (
                 <div key={result.pageid} className="group">
@@ -186,7 +186,7 @@ export default async function SearchResults({ params: { searchTerm } }: Props) {
                     <h3 className="mt-3 text-sm text-gray-700 font-medium">
                       {result.title}
                     </h3>
-                    <div className="absolute right-0 top-3 w-[40px] h-[40px] z-10 rounded-full flex justify-center items-center hover:bg-gray-200 ">
+                    <div className="hidden absolute right-0 top-3 w-[40px] h-[40px] z-10 rounded-full justify-center items-center hover:bg-gray-200 ">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -206,7 +206,7 @@ export default async function SearchResults({ params: { searchTerm } }: Props) {
                     </div>
                   </div>
 
-                  <p className="mt-1 text-lg sm:text-base font-bold text-gray-900">
+                  <p className="mt-1 text-lg sm:text-[16px] font-bold text-gray-900">
                     N50,000
                   </p>
                   {/* <p className="text-sm font-medium text-gray-900">Ipsum</p> */}
