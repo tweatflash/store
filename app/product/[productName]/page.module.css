@@ -1,0 +1,17 @@
+.new{
+    grid-template: "leftside rightside" / 8fr 4fr
+}
+@media (max-width: 1024px) {
+    .new {
+        grid-template: none;
+        max-width: 552px;
+        gap: 24px;
+    }
+    .ppNTRTHTMA{
+        margin-top: 0px !important;
+    }
+    .max_w_1024_py{
+        padding-top:0px ;
+        padding-bottom: 0px;
+    }
+}
