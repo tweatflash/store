@@ -76,7 +76,7 @@ export default async function SingleProduct({ params: { productName } }: SingleP
                                 Add to cart
                             </button>
                         </div>
-                        <div className={`${styles.new} grid w-full grid-cols-2 max-w-[1280px] m-auto gap-5 px-5 py-4`}>
+                        <div className={`${styles.new} grid w-full grid-cols-2 max-w-[1280px] m-auto gap-5 px-5 py-6`}>
                             <div className='h-auto'>
                                 <div className="w-full aspect-[5/4] rounded-[20px] bg-gray-200 border border-gray-300 ">
                                 {results.images && (
