@@ -31,10 +31,10 @@ export default async function SingleProduct({ params: { productName } }: SingleP
             {results ?
                 <div className='h-0 w-full'>
                     <div className="w-full min-h-screen">
-                        <div className='w-full p-4 sticky top-0 bg-gray-50 '>
-                            <div className='max-w-[1440px] m-auto w-full flex items-center justify-between'>
+                        <div className='w-full p-4 pb-0 sticky top-0 bg-gray-50 '>
+                            <div className='max-w-[1240px] border-gray-200 border-b m-auto w-full flex items-center justify-between pb-4'>
                                 <div>
-                                    <h1 className='font-bold text-2xl'>{results.title}</h1>
+                                    <h1 className='font-[500] text-2xl'>{results.title}</h1>
                                 </div>
                                 <div className='blaMin:flex hidden justify-between items-center'>
                                     <div className='text-right pr-4'>
@@ -42,11 +42,11 @@ export default async function SingleProduct({ params: { productName } }: SingleP
                                             N{results.price}
                                         </p>
                                         <p className='text-[12px]'>
-                                            <span>Free Shipping<sup>+</sup></span>
+                                            <span>{results.shippingInformation}<sup>+</sup></span>
                                         </p>
                                     </div>
                                     <button
-                                        className="rounded-sm bg-indigo-600 px-10 py-4 text-xl text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 "
+                                        className="rounded-sm bg-indigo-600 px-10 py-3 text-xl text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 font-semibold "
                                     >
                                     Add to cart
                                     </button>
@@ -64,12 +64,12 @@ export default async function SingleProduct({ params: { productName } }: SingleP
                                 </p>
                             </div>
                             <button
-                                className="rounded-sm bg-indigo-600 px-4 py-2 md:py-4 md:px-10 text-sm font-bold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 "
+                                className="rounded-sm bg-indigo-600 px-4 py-2 md:py-4 md:px-10 text-sm text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 font-semibold "
                             >
                                 Add to cart
                             </button>
                         </div>
-                        <div className={`${styles.new} grid w-full grid-cols-2 max-w-[1480px] m-auto gap-5 px-5 py-4`}>
+                        <div className={`${styles.new} grid w-full grid-cols-2 max-w-[1280px] m-auto gap-5 px-5 py-4`}>
                             <div className='h-auto'>
                                 <div className="w-full aspect-[5/4] rounded-[20px] bg-gray-200 border border-gray-300 ">
                                 {results.images && (
@@ -84,10 +84,10 @@ export default async function SingleProduct({ params: { productName } }: SingleP
                             <div className='h-auto'>
                                 <div className='bla:max-w-[448px] m-auto mb-20'>
                                     <div className='mb-7'>
-                                        <h1 className={`text-2xl font-semibold mt-10 bla:mt-0 blaMin:text-5xl`}>{results.title}.</h1>
+                                        <span className={`text-2xl font-[600] mt-10 bla:mt-0 blaMin:text-5xl`}>{results.title}.</span>
                                     </div>
                                     <div>
-                                        <p className='text-md'>{results.description}</p>
+                                        <p className='text-md font-normal'>{results.description}</p>
                                     </div>
                                     <div className="mt-4 border-t border-[#dadce0]">
                                         <h3 className="text-sm mt-4 font-base text-gray-500">Choose your color</h3>
@@ -121,7 +121,7 @@ export default async function SingleProduct({ params: { productName } }: SingleP
                                                 <input type="number" name="quantity" id="quantity" min={1} defaultValue={1} className='w-[50px] h-[40px] border border-gray-300 rounded-md text-center' />
                                             </div>
                                             <button
-                                                className="w-full h-[40px] rounded-[5px] bg-indigo-600 md:px-10 text-sm font-bold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 "
+                                                className="w-full h-[40px] rounded-[5px] bg-indigo-600 md:px-10 text-sm text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 font-semibold "
                                             >
                                                 Add to cart
                                             </button>

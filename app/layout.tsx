@@ -1,10 +1,10 @@
 import NavBar from "./components/navBar";
 import "./globals.css";
-import { Bricolage_Grotesque } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 
-const bricolageGrotesque = Bricolage_Grotesque({
+const geist = DM_Sans({
   subsets: ["latin"],
-  weight: ["400", "700"], // Choose your weights
+  weight: ["400", "700"], 
 });
 export const metadata = {
   title: "SKIILINK Store | Nigeria",
@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${bricolageGrotesque.className} bg-neutral-50 text-black selection:bg-teal-300 dark:bg-neutral-900 dark:text-white dark:selection:bg-pink-500 dark:selection:text-white`}
+        className={`${geist.className} bg-neutral-50 text-black selection:bg-teal-300 dark:bg-neutral-900 dark:text-white dark:selection:bg-pink-500 dark:selection:text-white`}
       >
         <NavBar />
         <main className="w-full flex flex-col items-start justify-center">
