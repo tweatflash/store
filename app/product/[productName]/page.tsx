@@ -19,6 +19,13 @@ export async function generateMetadata({ params: { productName } }: SingleProp) 
   return {
     title: data.title +' | Skiilink Store',
     description: data.description,
+    openGraph: {
+        images: data.images[0],
+    },
+    twitter: {
+        card: "summary_large_image",
+        images: data.images[0],
+    },
   };
 }
 export default async function SingleProduct({ params: { productName } }: SingleProp) {
