@@ -21,7 +21,7 @@ export async function generateMetadata({ params: { productName } }: SingleProp) 
     description: data.description,
     openGraph: {
         images: data.images[0],
-    },
+    },  
     twitter: {
         card: "summary_large_image",
         images: data.images[0],
@@ -29,9 +29,11 @@ export async function generateMetadata({ params: { productName } }: SingleProp) 
   };
 }
 export default async function SingleProduct({ params: { productName } }: SingleProp) {
+   
+
     const wikiData: Promise<dummyStore> = await getSingleWikiResult(productName);
     const data = await wikiData;
-    // console.log(data);
+    // console.log(data);   
     const results: dummyStore | undefined = await data;
     return (
         <>
@@ -40,7 +42,7 @@ export default async function SingleProduct({ params: { productName } }: SingleP
                     <div className="w-full min-h-screen">
                         <div className='w-full p-4 pb-0 sticky top-0 bg-gray-50 '>
                             <div className='max-w-[1240px] border-gray-200 border-b m-auto w-full flex items-center justify-between pb-4'>
-                                <div>
+                                <div> 
                                     <h1 className='font-[500] text-2xl'>{results.title}</h1>
                                 </div>
                                 <div className='blaMin:flex hidden justify-between items-center'>
@@ -76,14 +78,21 @@ export default async function SingleProduct({ params: { productName } }: SingleP
                                 Add to cart
                             </button>
                         </div>
-                        <div className={`${styles.new} grid w-full grid-cols-2 max-w-[1280px] m-auto gap-5 px-5 py-6`}>
-                            <div className='h-auto'>
-                                <div className="w-full aspect-[5/4] rounded-[20px] bg-gray-200 border border-gray-300 ">
+                        <div className={`${styles.new} flex flex-col w-full  max-w-[1280px] lg:flex-row  m-auto gap-5 px-5 py-6`}>
+                            <div className='lg:h-[560px] w-full h-auto flex lg:flex-row flex-col-reverse gap-4 max-w-[500px] lg:max-w-full m-auto aspect-auto lg:aspect-[1.3/1]'>
+                                <div className='lg:w-[186px] h-[186px] w-full lg:h-full overflow-hidden order-[0] '>
+                                    <div className="lg:w-full w-fit gap-4 flex lg:flex-col flex-row justify-between lg:h-fit h-full">
+                                        <div className=' bg-gray-200 lg:w-full lg:h-auto w-auto h-full aspect-square rounded-xl'></div>
+                                        <div className=' bg-gray-200 w-full aspect-square rounded-xl'></div>
+                                        <div className=' bg-gray-200 w-full aspect-square rounded-xl'></div>
+                                    </div>
+                                </div>  
+                                <div className="order-1 lg:w-[calc(100%-186px)] w-full h-auto rounded-[20px] bg-gray-200">
                                 {results.images && (
                                     <img
                                     // alt="Bruuhhh"
                                     src={results.images[0]}
-                                    className="aspect-[1/1.05] w-full h-full rounded-md object-cover group-hover:opacity-75 "
+                                    className=" w-full  rounded-md object-cover object-center group-hover:opacity-75 "
                                 />
                                 )}
                                 </div>
@@ -91,7 +100,7 @@ export default async function SingleProduct({ params: { productName } }: SingleP
                             <div className='h-auto'>
                                 <div className='bla:max-w-[448px] m-auto mb-20'>
                                     <div className='mb-7'>
-                                        <span className={`text-2xl font-[600] mt-10 bla:mt-0 blaMin:text-5xl`}>{results.title}.</span>
+                                        <span className={`text-2xl font-[600] mt-10 bla:mt-0 blaMin:text-4xl`}>{results.title}.</span>
                                     </div>
                                     <div>
                                         <p className='text-md font-normal'>{results.description}</p>

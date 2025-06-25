@@ -1,13 +1,36 @@
+"use client"
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+
 export default function RootLayout({
   
     children,
   }: {
     children: React.ReactNode;
   }) {
+      const router=useRouter()
+      const tabs = ["All",
+            "Cameras",
+            "Street lights",
+            "Electronics",
+            "Flood lights",
+            "Headwear",
+            "Hoodies",
+            "Jackets",
+            "Kids",
+            "Pets",
+            "Shirts",
+            "Stickers"
+        ];
+        const [activeTab,setActivetab]=useState(0)
+            const searchTab=(tab:string,index:number)=>{
+                setActivetab(index)
+                router.push(tab)
+            }
     return (
         <div className="mx-auto w-full min-h-screen flex max-w-screen-2xl flex-col gap-8 px-4 pt-4 pb-4 text-black md:flex-row dark:text-white ">
-        <div className="order-first w-full flex-none md:max-w-[150px]">
+        <div className="order-first w-full flex-none md:max-w-[150px] hidden md:block">
           <nav className="sticky top-[80px]">
             <h3 className="hidden text-xs text-neutral-500 md:block dark:text-neutral-400">
               Collections
@@ -110,32 +133,44 @@ export default function RootLayout({
                 </Link>
               </li>
             </ul>
-            <ul className="md:hidden">
-              <div className="relative">
-                <div className="flex w-full items-center justify-between rounded border border-black/30 px-4 py-2 text-sm dark:border-white/30">
-                  <div>All</div>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                    data-slot="icon"
-                    className="h-4"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                    ></path>
-                  </svg>
-                </div>
-              </div>
-            </ul>
+            
+              
           </nav>
         </div>
+        <div className="order-last w-full md:order-none">
+          
+            <div className="flex md:hidden flex-col justify-center relative py-2 px-0 sm:pl-20 sm:pr-12 sm:py-4 overflow-x-hidden resize-none">
+              {/* Tab Buttons */}
+              <div className="w-full relative overflow-x-auto flex flex-col h-12 no-scrollbar p-2">
+                
+                <div className="flex min-w-full justify-center absolute m-auto w-fit gap-2 px-2">
+                    {tabs.map((tab, index) => (
+                        <button
+                            key={index}
+                            className={`text-center text-sm text-nowrap h-9 rounded-full px-8 bg-[hsl(var(--accent))] ${
+                            activeTab === index ? "bg-black text-white dark:bg-white dark:text-black" : "bg-white  text-[#777777]"
+                            }`}
+                            onClick={()=>searchTab(tab,index)}
+                          
+                        >
+                            {tab}
+                        </button>
+                    ))}
+                </div> 
+                    
+                    
+              </div>
+
+              {/* Tab Content */}
+              {/* <div className="p-4">
+                {activeTab === 0 && <p>Welcome to the Home tab!</p>}
+                {activeTab === 1 && <p>This is your Profile section.</p>}
+                {activeTab === 2 && <p>Here are your Settings.</p>}
+              </div> */}
+            </div>
         {children}
+      </div>
+      
     </div>
             
           

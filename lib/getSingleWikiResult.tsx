@@ -8,3 +8,4 @@ export default async function getSingleWikiResult(productId:number) {
         return undefined
     }
 }
+ 
